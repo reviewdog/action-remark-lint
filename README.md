@@ -9,9 +9,6 @@ This action runs [remark-lint](https://github.com/remarkjs/remark-lint) with
 [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve
 code review experience.
 
-[![github-pr-check sample](https://user-images.githubusercontent.com/3797062/65701219-e828b980-e0bb-11e9-9051-2a1f400fe5e5.png)](https://github.com/prologic/action-remark-lint/pull/1)
-[![github-pr-review sample](https://user-images.githubusercontent.com/3797062/65700741-1c4faa80-e0bb-11e9-8cbd-9a99aeb38594.png)](https://github.com/prologic/action-remark-lint/pull/1)
-
 ## Inputs
 
 ### `github_token`
