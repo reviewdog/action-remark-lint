@@ -10,6 +10,5 @@ if [ "${INPUT_REPORTER}" = 'github-pr-review' ]; then
   exit 1
 else
   # github-pr-check,github-check (GitHub Check API) doesn't support markdown annotation.
-  remark . -use preset-lint-markdown-style-guide |
-    reviewdog -f="checkstyle" -name="remark-lint" -reporter="${INPUT_REPORTER:-github-pr-check}" -level="${INPUT_LEVEL}"
+  remark . | reviewdog -f="checkstyle" -name="remark-lint" -reporter="${INPUT_REPORTER:-github-pr-check}" -level="${INPUT_LEVEL}"
 fi
