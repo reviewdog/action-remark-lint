@@ -26,22 +26,7 @@ Reporter of reviewdog command [github-pr-check,github-pr-review,github-check].
 Default is github-pr-check.
 github-pr-review can use Markdown and add a link to rule page in reviewdog reports.
 
-### `path`
-
-Optional. Base directory to run remark-lint. Same as `[path]` of `find` command. Default: `.`
-
-### `pattern`
-
-Optional. File patterns of target files. Same as `-name [pattern]` of `find` command. Default: `*.sh`
-
-### `exclude`
-
-Optional. Exclude patterns of target files. Same as `-not -path [exclude]` of `find` command.
-e.g. `./git/*`
-
-### `remark-lint_flags`
-
-Optional. Flags of remark-lint command. Default: ``
+**NB:** Only `github-pr-check` is supported currently.
 
 ## Example usage
 
@@ -60,8 +45,5 @@ jobs:
         uses: prologic/action-remark-lint@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review # Change reporter.
-          path: "." # Optional.
-          pattern: "*.sh" # Optional.
-          exclude: "./.git/*" # Optional.
+          reporter: github-pr-review # Change reporter. (Only `github-pr-check` is supported at the moment).
 ```
