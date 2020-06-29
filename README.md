@@ -42,8 +42,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: remark-lint
-        uses: prologic/action-remark-lint@v1
+        uses: prologic/action-remark-lint@v0.0.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review # Change reporter. (Only `github-pr-check` is supported at the moment).
+          reporter: github-pr-check # Change reporter. (Only `github-pr-check` is supported at the moment).
 ```
