@@ -9,6 +9,10 @@ inputs:
     description: "Working directory relative to the root directory."
     required: false
     default: "."
+  remark_flags:
+    description: "Additional flags for remark-lint"
+    required: false
+    default: ""
   tool_name:
     description: "Tool name to use for reviewdog reporter"
     required: false

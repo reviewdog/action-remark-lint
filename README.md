@@ -45,6 +45,10 @@ See the Inputs section below for details on the defaults and optional configurat
 
 **Optional**. The directory to run remark-lint in. Default is `.`.
 
+### remark_flags
+
+**Optional**. Additional flags you want to pass to remark-lint. Default is ` `.
+
 ### `level`
 
 **Optional**. Report level for reviewdog [info,warning,error].
