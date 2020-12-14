@@ -1,7 +1,9 @@
 #!/bin/sh
 set -e # Exit immediately if a command exits with a non-zero status
 
-cd "${GITHUB_WORKSPACE}" || exit
+if [ -n "${GITHUB_WORKSPACE}" ] ; then
+  cd "${GITHUB_WORKSPACE}/${INPUT_WORKDIR}" || exit
+fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
@@ -22,5 +24,6 @@ remark --frail --quiet --use=remark-preset-lint-recommended . 2>&1 |
   -reporter="${INPUT_REPORTER:-github-pr-check}"\
   -filter-mode="${INPUT_FILTER_MODE}" \
   -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
-  -level="${INPUT_LEVEL}" -tee \
+  -level="${INPUT_LEVEL}" \
+  -tee \
   ${INPUT_REVIEWDOG_FLAGS}

@@ -39,34 +39,37 @@ See the Inputs section below for details on the defaults and optional configurat
 
 **Required**. Must be in form of `github_token: ${{ secrets.github_token }}`'.
 
+### workdir
+
+**Optional**. The directory to run remark-lint in. Default is `.`.
+
 ### `level`
 
-Optional. Report level for reviewdog [info,warning,error].
+**Optional**. Report level for reviewdog [info,warning,error].
 It's same as `-level` flag of reviewdog.
 
 ### `reporter`
 
-Reporter of reviewdog command [github-pr-check,github-pr-review,github-check].
-Default is github-pr-check.
-github-pr-review can use Markdown and add a link to rule page in reviewdog reports.
+**Optional**. Reporter of reviewdog command [github-pr-check,github-pr-review,github-check].
+Default is github-pr-check. github-pr-review can use Markdown and add a link to rule page in reviewdog reports.
 
 **NB:** Only `github-pr-check` is supported currently.
 
 #### `filter_mode`
 
-**Optional** Filtering mode for the reviewdog command [added, diff_context, file, nofilter]. Default = `"added"`.
+**Optional**. Filtering mode for the reviewdog command [added, diff_context, file, nofilter]. Default = `"added"`.
 
 #### `fail_on_error`
 
-**Optional** Exit code for reviewdog when errors are found [`true`, `false`]. Default = `false`.
+**Optional**. Exit code for reviewdog when errors are found [`true`, `false`]. Default = `false`.
 
 #### `reviewdog_flags`
 
-**Optional** Additional reviewdog flags. Default = `""`.
+**Optional**. Additional reviewdog flags. Default = `""`.
 
 #### `tool_name`
 
-**Optional** Tool name to use for reviewdog reporter. Default = `remark-lint`.
+**Optional**. Tool name to use for reviewdog reporter. Default = `remark-lint`.
 
 ## Development
 
