@@ -1,14 +1,11 @@
 # Reviewdog/action-remark-lint GitHub Action
 
-[![Test](https://github.com/prologic/action-remark-lintworkflows/Test/badge.svg)](https://github.com/prologic/action-remark-lintactions?query=workflow%3ATest)
-[![reviewdog](https://github.com/prologic/action-remark-lintworkflows/reviewdog/badge.svg)](https://github.com/prologic/action-remark-lintactions?query=workflow%3Areviewdog)
-[![depup](https://github.com/prologic/action-remark-lintworkflows/depup/badge.svg)](https://github.com/prologic/action-remark-lintactions?query=workflow%3Adepup)
-[![release](https://github.com/prologic/action-remark-lintworkflows/release/badge.svg)](https://github.com/prologic/action-remark-lintactions?query=workflow%3Arelease)
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/reviewdog/action-flake8?logo=github&sort=semver)](https://github.com/prologic/action-remark-lintreleases)
+[![Test](https://github.com/reviewdog/action-remark-lint/workflows/Test/badge.svg)](https://github.com/reviewdog/action-remark-lint/actions?query=workflow%3ATest)
+[![reviewdog](https://github.com/reviewdog/action-remark-lint/workflows/reviewdog/badge.svg)](https://github.com/reviewdog/action-remark-lint/actions?query=workflow%3Areviewdog)
+[![depup](https://github.com/reviewdog/action-remark-lint/workflows/depup/badge.svg)](https://github.com/reviewdog/action-remark-lint/actions?query=workflow%3Adepup)
+[![release](https://github.com/reviewdog/action-remark-lint/workflows/release/badge.svg)](https://github.com/reviewdog/action-remark-lint/actions?query=workflow%3Arelease)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/reviewdog/action-flake8?logo=github&sort=semver)](https://github.com/reviewdog/action-remark-lint/releases)
 [![action-bumpr supported](https://img.shields.io/badge/bumpr-supported-ff69b4?logo=github&link=https://github.com/haya14busa/action-bumpr)](https://github.com/haya14busa/action-bumpr)
-[![Linux CI](https://github.com/prologic/action-remark-lintworkflows/Linux%20CI/badge.svg)](https://github.com/prologic/action-remark-lintactions?query=workflow%3A%22Linux+CI%22)
-[![MacOS CI](https://github.com/prologic/action-remark-lintworkflows/MacOS%20CI/badge.svg)](https://github.com/prologic/action-remark-lintactions?query=workflow%3A%22MacOS+CI%22)
-[![Windows CI](https://github.com/prologic/action-remark-lintworkflows/Windows%20CI/badge.svg)](https://github.com/prologic/action-remark-lintactions?query=workflow%3A%22Windows+CI%22)
 
 ![action screenshot](https://user-images.githubusercontent.com/17570430/102060312-4ee5e000-3df2-11eb-8c82-767afeccd8db.png)
 ![action screenshot](https://user-images.githubusercontent.com/17570430/102059912-d3842e80-3df1-11eb-9b0a-2e04eab5e294.png)
@@ -28,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: remark-lint
-        uses: prologic/action-remark-lint@v0.0.5
+        uses: reviewdog/action-remark-lint/@v0.0.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-check # Change reporter. (Only `github-pr-check` is supported at the moment).
