@@ -49,23 +49,23 @@ See the Inputs section below for details on the defaults and optional configurat
 
 ### `level`
 
-**Optional**. Report level for reviewdog [info,warning,error].
+**Optional**. Report level for reviewdog \[info, warning, error\].
 It's same as `-level` flag of reviewdog.
 
 ### `reporter`
 
-**Optional**. Reporter of reviewdog command [github-pr-check,github-pr-review,github-check].
+**Optional**. Reporter of reviewdog command \[github-pr-check, github-pr-review, github-check\].
 Default is github-pr-check. github-pr-review can use Markdown and add a link to rule page in reviewdog reports.
 
 **NB:** Only `github-pr-check` is supported currently.
 
 #### `filter_mode`
 
-**Optional**. Filtering mode for the reviewdog command [added, diff_context, file, nofilter]. Default = `"added"`.
+**Optional**. Filtering mode for the reviewdog command \[added, diff_context, file, nofilter\]. Default = `"added"`.
 
 #### `fail_on_error`
 
-**Optional**. Exit code for reviewdog when errors are found [`true`, `false`]. Default = `false`.
+**Optional**. Exit code for reviewdog when errors are found \[`true`, `false`\]. Default = `false`.
 
 #### `reviewdog_flags`
 
