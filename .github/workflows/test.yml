@@ -6,7 +6,7 @@ on:
   pull_request:
 jobs:
   test-check:
-    name: runner / remark-lint (github-check)
+    name: runner / markdown-lint (github-check)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -14,10 +14,11 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-check
+          level: info
 
   test-pr-check:
     if: github.event_name == 'pull_request'
-    name: runner / remark-lint (github-pr-check)
+    name: runner / markdown-lint (github-pr-check)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -29,7 +30,7 @@ jobs:
 
   test-pr-review:
     if: github.event_name == 'pull_request'
-    name: runner / remark-lint (github-pr-review)
+    name: runner / markdown-lint (github-pr-review)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -38,3 +39,4 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           level: error
+          reviewdog_flags: -filter-mode=file -fail-on-error
