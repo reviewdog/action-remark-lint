@@ -10,7 +10,8 @@
 [![MacOS CI](https://github.com/prologic/action-remark-lintworkflows/MacOS%20CI/badge.svg)](https://github.com/prologic/action-remark-lintactions?query=workflow%3A%22MacOS+CI%22)
 [![Windows CI](https://github.com/prologic/action-remark-lintworkflows/Windows%20CI/badge.svg)](https://github.com/prologic/action-remark-lintactions?query=workflow%3A%22Windows+CI%22)
 
-![action screenshot](https://user-images.githubusercontent.com/17570430/102055763-a3399180-3deb-11eb-9a4d-442cffec63aa.png)
+![action screenshot](https://user-images.githubusercontent.com/17570430/102060312-4ee5e000-3df2-11eb-8c82-767afeccd8db.png)
+![action screenshot](https://user-images.githubusercontent.com/17570430/102059912-d3842e80-3df1-11eb-9b0a-2e04eab5e294.png)
 
 This action runs [remark-lint](https://github.com/remarkjs/remark-lint) with [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve
 code review experience.
