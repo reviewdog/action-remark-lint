@@ -1,22 +1,52 @@
-name: 'Run remark-lint with reviewdog'
-description: '🐶 Run remark-lint with reviewdog on pull requests to improve code review experience.'
-author: 'prologic'
+name: "Run remark-lint with reviewdog"
+description: "🐶 Run remark-lint with reviewdog on pull requests to improve code review experience."
+author: "prologic"
 inputs:
   github_token:
-    description: 'GITHUB_TOKEN.'
+    description: "GITHUB_TOKEN."
     required: true
+  workdir:
+    description: "Working directory relative to the root directory."
+    required: false
+    default: "."
+  remark_flags:
+    description: "Additional flags for remark-lint"
+    required: false
+    default: ""
+  tool_name:
+    description: "Tool name to use for reviewdog reporter"
+    required: false
+    default: "remark-lint"
   level:
-    description: 'Report level for reviewdog [info,warning,error]'
-    default: 'error'
+    description: "Report level for reviewdog [info,warning,error]"
+    required: false
+    default: "error"
   reporter:
     description: |
       Reporter of reviewdog command [github-pr-check,github-pr-review,github-check].
       Default is github-pr-check.
       github-pr-review can use Markdown and add a link to rule page in reviewdog reports.
-    default: 'github-pr-check'
+    required: false
+    default: "github-pr-check"
+  filter_mode:
+    description: |
+      Filtering mode for the reviewdog command [added, diff_context, file, nofilter].
+      Default is added.
+    required: false
+    default: "added"
+  fail_on_error:
+    description: |
+      Exit code for reviewdog when errors are found [true, false]
+      Default is `false`.
+    required: false
+    default: "false"
+  reviewdog_flags:
+    description: "Additional reviewdog flags"
+    required: false
+    default: ""
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
 branding:
-  icon: 'zoom-in'
-  color: 'purple'
+  icon: "zoom-in"
+  color: "purple"

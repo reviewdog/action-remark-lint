@@ -1,7 +1,9 @@
 FROM prologic/remark-lint:latest
 
-RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/nightly/master/install.sh| sh -s -- -b /usr/local/bin/
-# RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b /usr/local/bin/ v0.9.15
+ENV REVIEWDOG_VERSION=v0.11.0-nightly20201213+85edbc6
+
+RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/nightly/master/install.sh| sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
+
 RUN apk --no-cache -U add git
 
 COPY entrypoint.sh /entrypoint.sh
