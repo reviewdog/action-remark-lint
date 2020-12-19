@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: remark-lint
-        uses: reviewdog/action-remark-lint/@v0.0.5
+        uses: reviewdog/action-remark-lint@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-check # Change reporter. (Only `github-pr-check` is supported at the moment).
