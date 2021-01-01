@@ -3,7 +3,7 @@ description: "🐶 Run remark-lint with reviewdog on pull requests to improve co
 author: "prologic"
 inputs:
   workdir:
-    description: "Working directory relative to the root directory."
+    description: "Working directory relative to the root directory. Defaults to '.'."
     required: false
     default: "."
   format:
@@ -17,6 +17,10 @@ inputs:
       Exit code for reviewdog when errors are found [true, false]. Defaults to 'false'.
     required: false
     default: "false"
+  remark_flags:
+    description: "Additional remark-lint flags."
+    required: false
+    default: ""
   # Reviewdog related inputs
   annotate:
     description: "Annotate remark-lint changes using reviewdog. Defaults to 'true'."
@@ -50,6 +54,9 @@ inputs:
     description: "Additional reviewdog flags."
     required: false
     default: ""
+outputs:
+  is_formatted:
+    description: "Whether the files were formatted using the remark-lint linter."
 runs:
   using: "docker"
   image: "Dockerfile"

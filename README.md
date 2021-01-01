@@ -38,48 +38,52 @@ See the Inputs section below for details on the defaults and optional configurat
 
 **Required**. Must be in form of `github_token: ${{ secrets.github_token }}`'.
 
-### workdir
+### `workdir`
 
-**Optional**. The directory to run remark-lint in. Default is `.`.
+**Optional**. The directory to run remark-lint in. Defaults to `.`.
+
+### `format`
+
+**Optional**. If true, remark-lint format files and commit are creatable (use other Action). Defaults to `false`.
+
+#### `fail_on_error`
+
+**Optional**. Exit code for when remark-lint errors are found \[`true`, `false`]. Defaults to `false`.
+
+#### `remark_flags`
+
+**Optional**. Additional remark-lint flags. Defaults to `""`.
+
+### `annotate`
+
+**Optional**. Annotate remark-lint changes using reviewdog. Defaults to `true`.
+
+#### `tool_name`
+
+**Optional**. Tool name to use for reviewdog reporter. Defaults to `remark-lint`.
 
 ### `level`
 
-**Optional**. Report level for reviewdog \[info, warning, error].
-It's same as `-level` flag of reviewdog.
+**Optional**. Report level for reviewdog \[info, warning, error]. It's same as `-level` flag of reviewdog. Defaults to `error`.
 
 ### `reporter`
 
 **Optional**. Reporter of reviewdog command \[github-pr-check, github-pr-review, github-check].
 Default is github-pr-check. github-pr-review can use Markdown and add a link to rule page in reviewdog reports.
 
-**NB:** Only `github-pr-check` is supported currently.
+### `filter_mode`
 
-#### `filter_mode`
+**Optional**. Filtering mode for the reviewdog command \[added, diff_context, file, nofilter]. Defaults to `"added"`.
 
-**Optional**. Filtering mode for the reviewdog command \[added, diff_context, file, nofilter]. Default = `"added"`.
+### `reviewdog_flags`
 
-#### `fail_on_error`
+**Optional**. Additional reviewdog flags. Defaults to `""`.
 
-**Optional**. Exit code for reviewdog when errors are found \[`true`, `false`]. Default = `false`.
+## Outputs
 
-#### `reviewdog_flags`
+### `is_formatted`
 
-**Optional**. Additional reviewdog flags. Default = `""`.
-
-#### `tool_name`
-
-**Optional**. Tool name to use for reviewdog reporter. Default = `remark-lint`.
-
-## Docker input args
-
-Besides the aforementioned input arguments you can also supply additional input arguments for the remark-lint linter using the args keyword [run.args](https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#runsargs).
-
-```yaml
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args: ". --verbose"
-```
+Whether the files were formatted using the remark-lint linter.
 
 ## Advance use cases
 
