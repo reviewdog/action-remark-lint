@@ -10,9 +10,11 @@
 ![action screenshot](https://user-images.githubusercontent.com/17570430/102060312-4ee5e000-3df2-11eb-8c82-767afeccd8db.png)
 ![action screenshot](https://user-images.githubusercontent.com/17570430/102059912-d3842e80-3df1-11eb-9b0a-2e04eab5e294.png)
 
-This action runs [remark-lint](https://github.com/remarkjs/remark-lint) with [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve code review experience. It can be used to format your code and/or annotate possible changes that would be made during this formatting.
+This action runs [remark-lint](https://github.com/remarkjs/remark-lint) with [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve code review experience.
 
-## Quickstart
+## Quick start
+
+In it's simplest form this action can be used to annotate the changes that are suggested by the [remark-lint](https://github.com/remarkjs/remark-lint) linter.
 
 ```yml
 name: reviewdog
@@ -29,8 +31,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-check # Change reporter. (Only `github-pr-check` is supported at the moment).
 ```
-
-See the Inputs section below for details on the defaults and optional configuration settings.
 
 ## Inputs
 
@@ -79,70 +79,6 @@ Default is github-pr-check. github-pr-review can use Markdown and add a link to 
 
 **Optional**. Additional reviewdog flags. Defaults to `""`.
 
-## Outputs
+## Format your code
 
-### `is_formatted`
-
-Whether the files were formatted using the remark-lint linter.
-
-## Advance use cases
-
-This action can be combined with [peter-evans/create-pull-request](https://github.com/peter-evans/create-pull-request) or [stefanzweifel/git-auto-commit-action](https://github.com/stefanzweifel/git-auto-commit-action) to also apply the annotated changes to the repository.
-
-### Commit changes
-
-```yaml
-name: reviewdog
-on: [pull_request]
-jobs:
-  name: runner / remark-lint
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v2
-      with:
-        ref: ${{ github.head_ref }}
-    - name: Check files using remark-lint linter
-      uses: reviewdog/action-remark-lint@v1
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        reporter: github-check
-        level: error
-        fail_on_error: true
-        format: true
-    - name: Commit remark-lint formatting results
-      if: failure()
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: ":art: Format markdown code with remark-lint push"
-```
-
-### Create pull request
-
-```yaml
-name: reviewdog
-on: [pull_request]
-jobs:
-  name: runner / remark-lint
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v2
-    - name: Check files using remark-lint linter
-      uses: reviewdog/action-remark-lint@v1
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        reporter: github-check
-        level: error
-        fail_on_error: true
-        format: true
-    - name: Create Pull Request
-      if: failure()
-      uses: peter-evans/create-pull-request@v3
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        title: "Format markdown code with remark-lint linter"
-        commit-message: ":art: Format markdown code with remark-lint linter"
-        body: |
-          There appear to be some python formatting errors in ${{ github.sha }}. This pull request
-          uses the [remark-lint](https://github.com/remarkjs/remark-lint) linter to fix these issues.
-        branch: actions/remark-lint
-```
+This action is meant to annotate any possible changes that would need to be made to make your code adhere to the [remark-lint linting guidelines](https://github.com/remarkjs/remark-lint). It does not apply these changes to your codebase. If you also want to apply the changes to your repository, you can use the [reviewdog/action-suggester](https://github.com/reviewdog/action-suggester). You can find examples of how this is done can be found in [rickstaa/action-remark-lint](https://github.com/rickstaa/action-remark-lint/)
