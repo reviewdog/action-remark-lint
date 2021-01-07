@@ -16,24 +16,13 @@ jobs:
           reporter: github-check
           level: info
           workdir: ./testdata/
-
-  test-check-format:
-    name: runner / markdown-lint (github-check-format)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: ./
-        with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-check
-          level: info
-          format: true
-          workdir: ./testdata/
-      - name: Check if formatting was successful
+      - name: Check if code is left untouched (not formatted)
         run: |
-          changed_files=$(git status --porcelain --untracked-files=no | wc -l)
+          changed_files=$(git status --porcelain | wc -l)
           if [[ ${changed_files} -eq 0 ]]; then
             echo "No changes detected!"
+          else
+            echo "Changes detected!"
             exit 1
           fi
 
@@ -49,25 +38,13 @@ jobs:
           reporter: github-pr-check
           level: warning
           workdir: ./testdata/
-
-  test-pr-check-format:
-    if: github.event_name == 'pull_request'
-    name: runner / markdown-lint (github-pr-check-format)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: ./
-        with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-check
-          level: warning
-          format: true
-          workdir: ./testdata/
-      - name: Check if formatting was successful
+      - name: Check if code is left untouched (not formatted)
         run: |
-          changed_files=$(git status --porcelain --untracked-files=no | wc -l)
+          changed_files=$(git status --porcelain | wc -l)
           if [[ ${changed_files} -eq 0 ]]; then
             echo "No changes detected!"
+          else
+            echo "Changes detected!"
             exit 1
           fi
 
@@ -84,25 +61,12 @@ jobs:
           level: error
           reviewdog_flags: -filter-mode=file -fail-on-error
           workdir: ./testdata/
-
-  test-pr-review-format:
-    if: github.event_name == 'pull_request'
-    name: runner / markdown-lint (github-pr-review-format)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: ./
-        with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review
-          level: error
-          reviewdog_flags: -filter-mode=file -fail-on-error
-          format: true
-          workdir: ./testdata/
-      - name: Check if formatting was successful
+      - name: Check if code is left untouched (not formatted)
         run: |
-          changed_files=$(git status --porcelain --untracked-files=no | wc -l)
+          changed_files=$(git status --porcelain | wc -l)
           if [[ ${changed_files} -eq 0 ]]; then
             echo "No changes detected!"
+          else
+            echo "Changes detected!"
             exit 1
           fi

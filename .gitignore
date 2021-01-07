@@ -5,3 +5,7 @@ node_modules/
 # Files to ignore
 .package-lock.json
 .package.json
+
+# IDE
+.vscode/
+*.code-workspace
