@@ -4,11 +4,11 @@ set -o pipefail
 
 # If no arguments are given use current working directory
 remark_args=(".")
-if [[ "$#" -eq 0 && "${INPUT_REMARK_FLAGS}" != "" ]]; then
-  remark_args+=(${INPUT_REMARK_FLAGS})
-elif [[ "$#" -ne 0 && "${INPUT_REMARK_FLAGS}" != "" ]]; then
-  remark_args+=($* ${INPUT_REMARK_FLAGS})
-elif [[ "$#" -ne 0 && "${INPUT_REMARK_FLAGS}" == "" ]]; then
+if [[ "$#" -eq 0 && "${INPUT_REMARK_ARGS}" != "" ]]; then
+  remark_args+=(${INPUT_REMARK_ARGS})
+elif [[ "$#" -ne 0 && "${INPUT_REMARK_ARGS}" != "" ]]; then
+  remark_args+=($* ${INPUT_REMARK_ARGS})
+elif [[ "$#" -ne 0 && "${INPUT_REMARK_ARGS}" == "" ]]; then
   remark_args+=($*)
 else
   # Default (if no args provided).
