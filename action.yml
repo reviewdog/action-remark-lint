@@ -1,0 +1,22 @@
+name: "Run remark-lint"
+description: "Run remark-lint on your codebase to improve code review experience."
+author: "Rick Staa"
+inputs:
+  remark_args:
+    description: "Remark-lint input arguments."
+    required: false
+    default: ""
+  fail_on_error:
+    description: |
+      Exit code when remark-lint linting errors are found [true, false]. Defaults to 'true'.
+    required: false
+    default: "true"
+outputs:
+  is_formatted:
+    description: "Whether the files were formatted using the black linter."
+runs:
+  using: "docker"
+  image: "Dockerfile"
+branding:
+  icon: "zoom-in"
+  color: "purple"
