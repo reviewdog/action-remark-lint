@@ -1,0 +1,63 @@
+name: Test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  test-check:
+    name: runner / remark-lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        id: remark_lint_format
+        with:
+          fail_on_error: "false"
+      - name: Check if code is left untouched (not formatted)
+        run: |
+          changed_files=$(git status --porcelain | wc -l)
+          if [[ ${changed_files} -eq 0 ]]; then
+            echo "No changes detected!"
+          else
+            echo "Changes detected!"
+            exit 1
+          fi
+      - name: Check 'is_formatted' output value
+        run: |
+          formatted=${{ steps.remark_lint_format.outputs.is_formatted }}
+          if [[ ${formatted} != "false" ]]; then
+            echo "'is_formatted'  output invalid!"
+            exit 1
+          else
+            echo "'is_formatted'  output valid."
+          fi
+
+  test-format:
+    name: runner / remark-lint-format (format)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        id: remark_lint_format
+        with:
+          remark_args: ". -o"
+          fail_on_error: "false"
+      - name: Check if formatting was successful
+        run: |
+          changed_files=$(git status --porcelain | wc -l)
+          if [[ ${changed_files} -eq 0 ]]; then
+            echo "No changes detected!"
+            exit 1
+          else
+            echo "Changes detected!"
+          fi
+      - name: Check 'is_formatted' output value
+        run: |
+          formatted=${{ steps.remark_lint_format.outputs.is_formatted }}
+          if [[ ${formatted} == "false" ]]; then
+            echo "'is_formatted'  output invalid!"
+            exit 1
+          else
+            echo "'is_formatted'  output valid."
+          fi
