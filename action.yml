@@ -3,12 +3,11 @@ description: "🐶 Run remark-lint with reviewdog on pull requests to improve co
 author: "prologic"
 inputs:
   workdir:
-    description: "Working directory relative to the root directory. Defaults to '.'."
+    description: "Working directory relative to the root directory."
     required: false
     default: "."
   fail_on_error:
-    description: |
-      Exit code for reviewdog when errors are found [true, false]. Defaults to 'false'.
+    description: "Exit code for reviewdog when errors are found [true, false]."
     required: false
     default: "false"
   remark_flags:
@@ -17,27 +16,23 @@ inputs:
     default: ""
   # Reviewdog related inputs
   github_token:
-    description: "GITHUB_TOKEN. Defaults to '${{ github.token }}'."
+    description: "The GITHUB_TOKEN.  Must be in form of 'github_token: ${{ secrets.github_token }}'."
     required: true
     default: ${{ github.token }}
   tool_name:
-    description: "Tool name to use for reviewdog reporter. Defaults to 'remark-format'."
+    description: "Tool name to use for reviewdog reporter."
     required: false
     default: "remark-lint"
   level:
-    description: "Report level for reviewdog [info, warning, error]. Defaults to 'error'."
+    description: "Report level for reviewdog [info, warning, error]."
     required: false
     default: "error"
   reporter:
-    description: |
-      Reporter of reviewdog command [github-pr-check, github-pr-review, github-check].
-      Defaults to 'github-pr-check'.
+    description: "Reporter of reviewdog command [github-pr-check, github-pr-review, github-check]."
     required: false
     default: "github-pr-check"
   filter_mode:
-    description: |
-      Filtering mode for the reviewdog command [added, diff_context, file, nofilter].
-      Default is added.
+    description: "Filtering mode for the reviewdog command [added, diff_context, file, nofilter]."
     required: false
     default: "added"
   reviewdog_flags:

@@ -36,7 +36,7 @@ jobs:
 
 ### `github_token`
 
-**Required**. Must be in form of `github_token: ${{ secrets.github_token }}`'. Defaults to `${{ github.token }}`.
+**Required**. The [GITHUB_TOKEN](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow). Must be in form of `github_token: ${{ secrets.github_token }}`. Defaults to `${{ github.token }}`.
 
 ### `workdir`
 
@@ -48,7 +48,7 @@ jobs:
 
 #### `fail_on_error`
 
-**Optional**. Exit code for when remark-lint errors are found \[`true`, `false`]. Defaults to `false`.
+**Optional**. Exit code for when remark-lint errors are found `[true, false]`. Defaults to `false`.
 
 #### `remark_flags`
 
@@ -64,16 +64,16 @@ jobs:
 
 ### `level`
 
-**Optional**. Report level for reviewdog `\[info, warning, error]`. It's same as `-level` flag of reviewdog. Defaults to `error`.
+**Optional**. Report level for reviewdog `[info, warning, error]`. It's same as `-level` flag of reviewdog. Defaults to `error`.
 
 ### `reporter`
 
-**Optional**. Reporter of reviewdog command `\[github-pr-check, github-pr-review, github-check]`.
+**Optional**. Reporter of reviewdog command `[github-pr-check, github-pr-review, github-check]`.
 Default is `github-pr-check`. `github-pr-review` can use Markdown and add a link to rule page in reviewdog reports.
 
 ### `filter_mode`
 
-**Optional**. Filtering mode for the reviewdog command `\[added, diff_context, file, nofilter]`. Defaults to `added`.
+**Optional**. Filtering mode for the reviewdog command `[added, diff_context, file, nofilter]`. Defaults to `added`.
 
 ### `reviewdog_flags`
 
