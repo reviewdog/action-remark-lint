@@ -36,7 +36,7 @@ jobs:
 
 ### `github_token`
 
-**Required**. Must be in form of `github_token: ${{ secrets.github_token }}`'.
+**Required**. Must be in form of `github_token: ${{ secrets.github_token }}`'. Defaults to `${{ github.token }}`.
 
 ### `workdir`
 

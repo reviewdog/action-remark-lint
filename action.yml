@@ -17,11 +17,11 @@ inputs:
     default: ""
   # Reviewdog related inputs
   github_token:
-    description: "The automatically created secret github action token."
+    description: "GITHUB_TOKEN. Defaults to '${{ github.token }}'."
     required: true
     default: ${{ github.token }}
   tool_name:
-    description: "Tool name to use for reviewdog reporter. Defaults to 'black-format'."
+    description: "Tool name to use for reviewdog reporter. Defaults to 'remark-format'."
     required: false
     default: "remark-lint"
   level:

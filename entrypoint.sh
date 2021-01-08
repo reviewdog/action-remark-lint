@@ -1,4 +1,6 @@
 #!/bin/bash
+# NOTE: ${VAR,,} Is bash 4.0 syntax to make strings lowercase.
+
 set -eu # Increase bash strictness
 set -o pipefail
 
