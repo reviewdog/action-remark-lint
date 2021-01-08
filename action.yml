@@ -42,6 +42,8 @@ inputs:
 runs:
   using: "docker"
   image: "Dockerfile"
+
+# Ref: https://haya14busa.github.io/github-action-brandings/
 branding:
   icon: "zoom-in"
   color: "purple"
