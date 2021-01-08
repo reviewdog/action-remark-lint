@@ -46,10 +46,6 @@ jobs:
 
 **Optional**. If true, remark-lint format files and commit are creatable (use other Action). Defaults to `false`.
 
-#### `fail_on_error`
-
-**Optional**. Exit code for when remark-lint errors are found `[true, false]`. Defaults to `false`.
-
 #### `remark_flags`
 
 **Optional**. Additional remark-lint flags. Defaults to `""`.
@@ -74,6 +70,10 @@ Default is `github-pr-check`. `github-pr-review` can use Markdown and add a link
 ### `filter_mode`
 
 **Optional**. Filtering mode for the reviewdog command `[added, diff_context, file, nofilter]`. Defaults to `added`.
+
+#### `fail_on_error`
+
+**Optional**. Exit code for when reviewdog when errors are found `[true, false]`. Defaults to `false`.
 
 ### `reviewdog_flags`
 
