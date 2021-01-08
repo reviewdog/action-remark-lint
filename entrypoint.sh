@@ -17,6 +17,7 @@ elif [[ "$#" -ne 0 && "${INPUT_REMARK_FLAGS}" == "" ]]; then
 fi
 
 # NOTE: ${VAR,,} Is bash 4.0 syntax to make strings lowercase.
+echo "[action-remark-lint] Checking markdown code with the remark-lint linter and reviewdog..."
 remark --use=remark-preset-lint-recommended . ${remark_args[@]} 2>&1 |
   sed 's/\x1b\[[0-9;]*m//g' | # Removes ansi codes see https://github.com/reviewdog/errorformat/issues/51
   reviewdog -f=remark-lint \
