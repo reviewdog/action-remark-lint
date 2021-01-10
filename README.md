@@ -4,16 +4,17 @@
 [![reviewdog](https://github.com/reviewdog/action-remark-lint/workflows/reviewdog/badge.svg)](https://github.com/reviewdog/action-remark-lint/actions?query=workflow%3Areviewdog)
 [![depup](https://github.com/reviewdog/action-remark-lint/workflows/depup/badge.svg)](https://github.com/reviewdog/action-remark-lint/actions?query=workflow%3Adepup)
 [![release](https://github.com/reviewdog/action-remark-lint/workflows/release/badge.svg)](https://github.com/reviewdog/action-remark-lint/actions?query=workflow%3Arelease)
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/reviewdog/action-remark-lint?logo=github&sort=semver)](https://github.com/reviewdog/action-remark-lint/releases)
-[![action-bumpr supported](https://img.shields.io/badge/bumpr-supported-ff69b4?logo=github&link=https://github.com/haya14busa/action-bumpr)](https://github.com/haya14busa/action-bumpr)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/reviewdog/action-remark-lint?logo=github\&sort=semver)](https://github.com/reviewdog/action-remark-lint/releases)
+[![action-bumpr supported](https://img.shields.io/badge/bumpr-supported-ff69b4?logo=github\&link=https://github.com/haya14busa/action-bumpr)](https://github.com/haya14busa/action-bumpr)
 
 ![action screenshot](https://user-images.githubusercontent.com/17570430/102060312-4ee5e000-3df2-11eb-8c82-767afeccd8db.png)
 ![action screenshot](https://user-images.githubusercontent.com/17570430/102059912-d3842e80-3df1-11eb-9b0a-2e04eab5e294.png)
 
-This action runs [remark-lint](https://github.com/remarkjs/remark-lint) with [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve
-code review experience.
+This action runs [remark-lint](https://github.com/remarkjs/remark-lint) with [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve code review experience.
 
-## Quickstart
+## Quick start
+
+In it's simplest form this action can be used to annotate the changes that are suggested by the [remark-lint](https://github.com/remarkjs/remark-lint) linter.
 
 ```yml
 name: reviewdog
@@ -28,83 +29,51 @@ jobs:
         uses: reviewdog/action-remark-lint@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-check # Change reporter. (Only `github-pr-check` is supported at the moment).
+          reporter: github-pr-check
 ```
-
-See the Inputs section below for details on the defaults and optional configuration settings.
 
 ## Inputs
 
 ### `github_token`
 
-**Required**. Must be in form of `github_token: ${{ secrets.github_token }}`'.
+**Required**. The [GITHUB_TOKEN](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow). Must be in form of `github_token: ${{ secrets.github_token }}`. Defaults to `${{ github.token }}`.
 
-### workdir
+### `workdir`
 
-**Optional**. The directory to run remark-lint in. Default is `.`.
+**Optional**. The directory to run remark-lint in. Defaults to `.`.
 
-### remark_flags
+#### `remark_args`
 
-**Optional**. Additional flags you want to pass to remark-lint. Default is ` `.
+**Optional**. Additional remark-lint input arguments. Defaults to `""`.
 
-### `level`
+### `annotate`
 
-**Optional**. Report level for reviewdog \[info, warning, error\].
-It's same as `-level` flag of reviewdog.
-
-### `reporter`
-
-**Optional**. Reporter of reviewdog command \[github-pr-check, github-pr-review, github-check\].
-Default is github-pr-check. github-pr-review can use Markdown and add a link to rule page in reviewdog reports.
-
-**NB:** Only `github-pr-check` is supported currently.
-
-#### `filter_mode`
-
-**Optional**. Filtering mode for the reviewdog command \[added, diff_context, file, nofilter\]. Default = `"added"`.
-
-#### `fail_on_error`
-
-**Optional**. Exit code for reviewdog when errors are found \[`true`, `false`\]. Default = `false`.
-
-#### `reviewdog_flags`
-
-**Optional**. Additional reviewdog flags. Default = `""`.
+**Optional**. Annotate remark-lint changes using reviewdog. Defaults to `true`.
 
 #### `tool_name`
 
-**Optional**. Tool name to use for reviewdog reporter. Default = `remark-lint`.
+**Optional**. Tool name to use for reviewdog reporter. Defaults to `remark-lint`.
 
-## Development
+### `level`
 
-### Release
+**Optional**. Report level for reviewdog `[info, warning, error]`. It's same as `-level` flag of reviewdog. Defaults to `error`.
 
-#### [haya14busa/action-bumpr](https://github.com/haya14busa/action-bumpr)
+### `reporter`
 
-You can bump version on merging Pull Requests with specific labels (bump:major,bump:minor,bump:patch).
-Pushing tag manually by yourself also work.
+**Optional**. Reporter of reviewdog command `[github-pr-check, github-pr-review, github-check]`. Default is `github-pr-check`.
 
-#### [haya14busa/action-update-semver](https://github.com/haya14busa/action-update-semver)
+### `filter_mode`
 
-This action updates major/minor release tags on a tag push. e.g. Update v1 and v1.2 tag when released v1.2.3.
-ref: <https://help.github.com/en/articles/about-actions#versioning-your-action>
+**Optional**. Filtering mode for the reviewdog command `[added, diff_context, file, nofilter]`. Defaults to `added`.
 
-### Lint - reviewdog integration
+#### `fail_on_error`
 
-This reviewdog action template itself is integrated with reviewdog to run lints
-which is useful for Docker container based actions.
+**Optional**. Exit code for when reviewdog when errors are found `[true, false]`. Defaults to `false`.
 
-![reviewdog integration](https://user-images.githubusercontent.com/3797062/72735107-7fbb9600-3bde-11ea-8087-12af76e7ee6f.png)
+### `reviewdog_flags`
 
-Supported linters:
+**Optional**. Additional reviewdog flags. Defaults to `""`.
 
--   [reviewdog/action-shellcheck](https://github.com/reviewdog/action-shellcheck)
--   [reviewdog/action-hadolint](https://github.com/reviewdog/action-hadolint)
--   [reviewdog/action-misspell](https://github.com/reviewdog/action-misspell)
+## Format your code
 
-### Dependencies Update Automation
-
-This repository uses [reviewdog/action-depup](https://github.com/reviewdog/action-depup) to update
-reviewdog version.
-
-[![reviewdog depup demo](https://user-images.githubusercontent.com/3797062/73154254-170e7500-411a-11ea-8211-912e9de7c936.png)](https://github.com/reviewdog/action-template/pull/6)
+This action is meant to annotate any possible changes that would need to be made to make your code adhere to the [remark-lint linting guidelines](https://github.com/remarkjs/remark-lint). It does not apply these changes to your codebase. If you also want to apply the changes to your repository, you can use the [reviewdog/action-suggester](https://github.com/reviewdog/action-suggester). You can find examples of how this is done can be found in [rickstaa/action-remark-lint](https://github.com/rickstaa/action-remark-lint/)

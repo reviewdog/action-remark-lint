@@ -15,6 +15,7 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-check
           level: info
+          workdir: ./testdata/
 
   test-pr-check:
     if: github.event_name == 'pull_request'
@@ -27,6 +28,7 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-check
           level: warning
+          workdir: ./testdata/
 
   test-pr-review:
     if: github.event_name == 'pull_request'
@@ -40,3 +42,4 @@ jobs:
           reporter: github-pr-review
           level: error
           reviewdog_flags: -filter-mode=file -fail-on-error
+          workdir: ./testdata/
