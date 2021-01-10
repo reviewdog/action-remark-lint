@@ -6,8 +6,8 @@ inputs:
     description: "Working directory relative to the root directory."
     required: false
     default: "."
-  remark_flags:
-    description: "Additional remark-lint flags."
+  remark_args:
+    description: "Additional remark-lint input arguments."
     required: false
     default: ""
   # Reviewdog related inputs

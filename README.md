@@ -44,7 +44,7 @@ jobs:
 
 #### `remark_args`
 
-**Optional**. Additional remark-lint flags. Defaults to `""`.
+**Optional**. Additional remark-lint input arguments. Defaults to `""`.
 
 ### `annotate`
 
