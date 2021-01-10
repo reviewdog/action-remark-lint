@@ -42,11 +42,7 @@ jobs:
 
 **Optional**. The directory to run remark-lint in. Defaults to `.`.
 
-### `format`
-
-**Optional**. If true, remark-lint format files and commit are creatable (use other Action). Defaults to `false`.
-
-#### `remark_flags`
+#### `remark_args`
 
 **Optional**. Additional remark-lint flags. Defaults to `""`.
 
@@ -64,8 +60,7 @@ jobs:
 
 ### `reporter`
 
-**Optional**. Reporter of reviewdog command `[github-pr-check, github-pr-review, github-check]`.
-Default is `github-pr-check`. `github-pr-review` can use Markdown and add a link to rule page in reviewdog reports.
+**Optional**. Reporter of reviewdog command `[github-pr-check, github-pr-review, github-check]`. Default is `github-pr-check`.
 
 ### `filter_mode`
 
