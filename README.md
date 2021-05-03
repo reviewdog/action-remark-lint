@@ -42,9 +42,9 @@ jobs:
 
 **Optional**. The directory to run remark-lint in. Defaults to `.`.
 
-#### `remark_args`
+#### `remark_flags`
 
-**Optional**. Additional remark-lint input arguments. Defaults to `""`.
+**Optional**. Additional remark-lint input flags. Defaults to `""`.
 
 ### `annotate`
 
