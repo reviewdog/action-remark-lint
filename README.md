@@ -24,9 +24,9 @@ jobs:
     name: runner / remark-lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: remark-lint
-        uses: reviewdog/action-remark-lint@v1
+        uses: reviewdog/action-remark-lint@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-check
