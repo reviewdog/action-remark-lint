@@ -1,11 +1,11 @@
 FROM prologic/remark-lint:latest
 
-ENV REVIEWDOG_VERSION=v0.11.0-nightly20201213+85edbc6
+ENV REVIEWDOG_VERSION=v0.12.0
 
 RUN apk --no-cache add bash~=5.0
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/nightly/master/install.sh | sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
+RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
 
 RUN apk --no-cache -U add git
 
