@@ -1,6 +1,6 @@
 FROM prologic/remark-lint:latest
 
-ENV REVIEWDOG_VERSION=v0.12.0
+ENV REVIEWDOG_VERSION=v0.13.0
 
 RUN apk --no-cache add bash~=5.0
 
