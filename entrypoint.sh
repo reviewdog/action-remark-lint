@@ -7,6 +7,14 @@ fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
+echo "[action-remark-lint] Versions: $(remark --version), remark-lint: $(npm remark-lint --version)"
+
+# Install plugins if package.sjon file is present
+if [[ -f "package.json" ]]; then
+  echo "[action-remark-lint] Installing npm dependencies..."
+  npm install
+fi
+
 # NOTE: ${VAR,,} Is bash 4.0 syntax to make strings lowercase.
 echo "[action-remark-lint] Checking markdown code with the remark-lint linter and reviewdog..."
 remark --use=remark-preset-lint-recommended . ${INPUT_REMARK_ARGS} 2>&1 |
