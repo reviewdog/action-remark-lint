@@ -1,15 +1,13 @@
-FROM prologic/remark-lint:latest
+FROM node:current-alpine
 
 ENV REVIEWDOG_VERSION=v0.13.0
 
-RUN apk --no-cache add bash~=5.0
+RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
+RUN apk --no-cache add git bash
 
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
-
-RUN apk --no-cache -U add git
+RUN npm install -g remark-cli remark-preset-lint-recommended remark-lint
 
 COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD []
