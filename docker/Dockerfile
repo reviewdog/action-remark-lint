@@ -9,10 +9,8 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
 
 COPY entrypoint.sh package.json package-lock.json ./
-RUN chmod +x entrypoint.sh
+RUN chmod +x entrypoint.sh && npm install && rm package*.json
 
-RUN npm install
 
-RUN rm package*.json
 
 ENTRYPOINT ["/usr/app/entrypoint.sh"]
