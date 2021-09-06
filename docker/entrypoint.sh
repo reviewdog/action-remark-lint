@@ -7,7 +7,7 @@ fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-echo "[action-remark-lint] Versions: $(remark --version), remark-lint: $(npm remark-lint --version)"
+echo "[action-remark-lint] Versions: $(npx remark-cli --version)"
 
 # Install plugins if package.sjon file is present
 if [[ -f "package.json" ]]; then
@@ -17,7 +17,7 @@ fi
 
 # NOTE: ${VAR,,} Is bash 4.0 syntax to make strings lowercase.
 echo "[action-remark-lint] Checking markdown code with the remark-lint linter and reviewdog..."
-remark --use=remark-preset-lint-recommended . "${INPUT_REMARK_ARGS}" 2>&1 |
+npx remark-cli --use=remark-preset-lint-recommended . "${INPUT_REMARK_ARGS}" 2>&1 |
   sed 's/\x1b\[[0-9;]*m//g' | # Removes ansi codes see https://github.com/reviewdog/errorformat/issues/51
   reviewdog -f=remark-lint \
     -name="${INPUT_TOOL_NAME}" \

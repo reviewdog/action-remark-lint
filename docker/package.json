@@ -1,0 +1,16 @@
+{
+  "name": "action-remark-lint",
+  "version": "2.0.0",
+  "description": "The Docker image for action-remark-lint",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "remark-cli": "^10.0.0",
+    "remark-lint": "^9.0.1",
+    "remark-preset-lint-recommended": "^6.0.1"
+  }
+}
