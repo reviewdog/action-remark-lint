@@ -1,4 +1,11 @@
 #!/bin/bash
+
+if [[ "${DEBUG}" = true ]]; then
+  echo "[action-remark-lint] Debug flag detected, switching on trace and verbose mode."
+  set -o xtrace
+  set +o verbose
+fi
+
 set -eu # Increase bash error strictness
 
 if [[ -n "${GITHUB_WORKSPACE}" ]]; then
