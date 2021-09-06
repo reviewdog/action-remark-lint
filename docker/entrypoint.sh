@@ -14,7 +14,7 @@ fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-echo "[action-remark-lint] Versions: $(npx remark-cli --version)"
+echo "[action-remark-lint] Versions: $(cat ./remark_version)"
 
 # Install plugins if package.sjon file is present
 if [[ -f "package.json" ]]; then
