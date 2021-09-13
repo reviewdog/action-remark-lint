@@ -14,7 +14,7 @@ jobs:
       - uses: reviewdog/action-depup@v1
         id: depup
         with:
-          file: Dockerfile
+          file: docker/Dockerfile
           version_name: REVIEWDOG_VERSION
           repo: reviewdog/reviewdog
 

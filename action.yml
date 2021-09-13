@@ -41,7 +41,7 @@ inputs:
     default: ""
 runs:
   using: "docker"
-  image: "Dockerfile"
+  image: "docker/Dockerfile"
 
 # Ref: https://haya14busa.github.io/github-action-brandings/
 branding:

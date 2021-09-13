@@ -1,4 +1,11 @@
 #!/bin/bash
+
+if [[ "${DEBUG}" = true ]]; then
+  echo "[action-remark-lint] Debug flag detected, switching on trace and verbose mode."
+  set -o xtrace
+  set +o verbose
+fi
+
 set -eu # Increase bash error strictness
 
 if [[ -n "${GITHUB_WORKSPACE}" ]]; then
@@ -7,7 +14,7 @@ fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-echo "[action-remark-lint] Versions: $(remark --version), remark-lint: $(npm remark-lint --version)"
+echo "[action-remark-lint] Versions: $(cat ./remark_version)"
 
 # Install plugins if package.sjon file is present
 if [[ -f "package.json" ]]; then
@@ -17,7 +24,7 @@ fi
 
 # NOTE: ${VAR,,} Is bash 4.0 syntax to make strings lowercase.
 echo "[action-remark-lint] Checking markdown code with the remark-lint linter and reviewdog..."
-remark --use=remark-preset-lint-recommended . ${INPUT_REMARK_ARGS} 2>&1 |
+npx remark-cli --use=remark-preset-lint-recommended . "${INPUT_REMARK_ARGS}" 2>&1 |
   sed 's/\x1b\[[0-9;]*m//g' | # Removes ansi codes see https://github.com/reviewdog/errorformat/issues/51
   reviewdog -f=remark-lint \
     -name="${INPUT_TOOL_NAME}" \
@@ -26,4 +33,4 @@ remark --use=remark-preset-lint-recommended . ${INPUT_REMARK_ARGS} 2>&1 |
     -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
     -level="${INPUT_LEVEL}" \
     -tee \
-    ${INPUT_REVIEWDOG_FLAGS}
+    "${INPUT_REVIEWDOG_FLAGS}"
