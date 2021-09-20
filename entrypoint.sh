@@ -15,6 +15,12 @@ if [[ -f "package.json" ]]; then
   npm install
 fi
 
+# Branch migration warning (see #48)
+echo -e \
+  "\e[33mWARNING: You're using this action from the master branch. We migrated to using" \
+  "the main branch instead (see #48). Please change the action-remark-lint branch in" \
+  "your gh-action recipe to use the latest features.\e[0m"
+
 # NOTE: ${VAR,,} Is bash 4.0 syntax to make strings lowercase.
 echo "[action-remark-lint] Checking markdown code with the remark-lint linter and reviewdog..."
 remark --use=remark-preset-lint-recommended . ${INPUT_REMARK_ARGS} 2>&1 |
