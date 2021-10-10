@@ -42,15 +42,15 @@ jobs:
 
 **Optional**. The directory to run remark-lint in. Defaults to `.`.
 
-#### `remark_args`
+### `remark_args`
 
-**Optional**. Additional remark-lint input arguments. Defaults to `""`.
+**Optional**. Additional remark-lint input arguments. Defaults to `"--use=remark-preset-lint-recommended"`.
 
 ### `annotate`
 
 **Optional**. Annotate remark-lint changes using reviewdog. Defaults to `true`.
 
-#### `tool_name`
+### `tool_name`
 
 **Optional**. Tool name to use for reviewdog reporter. Defaults to `remark-lint`.
 
@@ -66,13 +66,17 @@ jobs:
 
 **Optional**. Filtering mode for the reviewdog command `[added, diff_context, file, nofilter]`. Defaults to `added`.
 
-#### `fail_on_error`
+### `fail_on_error`
 
 **Optional**. Exit code for when reviewdog when errors are found `[true, false]`. Defaults to `false`.
 
 ### `reviewdog_flags`
 
 **Optional**. Additional reviewdog flags. Defaults to `""`.
+
+### `rules_and_presets`
+
+**Optional**. Extra rules and presets that need to be installed. Defaults to `""`.
 
 ## Format your code
 
