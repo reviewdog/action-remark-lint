@@ -18,12 +18,12 @@ fi
 # Install additional plugins
 if [[ -n "${INPUT_RULES_AND_PRESETS}" ]]; then
   echo "[action-remark-lint] Installing npm dependencies..."
-  npm install $INPUT_RULES_AND_PRESETS
+  npm install ${INPUT_RULES_AND_PRESETS}
 fi
 
 # NOTE: ${VAR,,} Is bash 4.0 syntax to make strings lowercase.
 echo "[action-remark-lint] Checking markdown code with the remark-lint linter and reviewdog..."
-remark ${INPUT_REMARK_ARGS} . 2>&1 |
+remark . ${INPUT_REMARK_ARGS} 2>&1 |
   sed 's/\x1b\[[0-9;]*m//g' | # Removes ansi codes see https://github.com/reviewdog/errorformat/issues/51
   reviewdog -f=remark-lint \
     -name="${INPUT_TOOL_NAME}" \
