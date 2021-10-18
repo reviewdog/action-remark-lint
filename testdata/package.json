@@ -2,27 +2,38 @@
   "name": "action-remark-lint-testdata",
   "version": "1.0.0",
   "description": "Package that contains testdata for the testing the action-remark-lint github action.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/reviewdog/action-remark-lint.git"
-  },
   "keywords": [
     "github",
     "action",
     "test"
   ],
-  "author": "Rick Staa",
-  "license": "ISC",
+  "homepage": "https://github.com/reviewdog/action-remark-lint#readme",
   "bugs": {
     "url": "https://github.com/reviewdog/action-remark-lint/issues"
   },
-  "homepage": "https://github.com/reviewdog/action-remark-lint#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reviewdog/action-remark-lint.git"
+  },
+  "license": "ISC",
+  "author": "Rick Staa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "remarkConfig": {
+    "plugins": [
+      "remark-lint-emphasis-marker",
+      "remark-lint-strong-marker"
+    ],
+    "settings": {
+      "emphasis": "*",
+      "strong": "*"
+    }
+  },
   "dependencies": {
     "remark-lint-list-item-indent": "^3.0.1",
-    "remark-preset-lint-recommended": "^6.0.1"
+    "remark-preset-lint-recommended": "^6.0.1",
+    "sort-package-json": "^1.52.0"
   }
 }

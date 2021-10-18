@@ -13,12 +13,16 @@ echo "[action-remark-lint] Versions: $(remark --version), remark-lint: $(npm rem
 if [[ -f "package.json" ]]; then
   echo "[action-remark-lint] Installing npm dependencies..."
   npm install
+
+  # Add default if `INPUT_REMARK_ARGS` is not set and no `remarkConfig` is found
+  if ! grep -q '"remarkConfig"' package.json; then
+    INPUT_REMARK_ARGS=${INPUT_REMARK_ARGS:=--use=remark-preset-lint-recommended}
+  fi
 fi
 
-# Install additional plugins
-if [[ -n "${INPUT_RULES_AND_PRESETS}" ]]; then
-  echo "[action-remark-lint] Installing npm dependencies..."
-  npm install ${INPUT_RULES_AND_PRESETS}
+# Add default value if `INPUT_REMARK_ARGS` is not set and no `.remarkrc*` config file is found
+if ! compgen -G .remarkrc* > /dev/null; then
+  INPUT_REMARK_ARGS=${INPUT_REMARK_ARGS:=--use=remark-preset-lint-recommended}
 fi
 
 # NOTE: ${VAR,,} Is bash 4.0 syntax to make strings lowercase.

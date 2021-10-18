@@ -9,7 +9,9 @@ inputs:
   remark_args:
     description: "Additional remark-lint input arguments."
     required: false
-    default: "--use=remark-preset-lint-recommended"
+    # NOTE: The actual default values is '--use=remark-preset-lint-recommended' but it is
+    # only applied programmatically when no input or config file is found.
+    default: ""
   # Reviewdog related inputs
   github_token:
     description: "GITHUB_TOKEN."
@@ -37,10 +39,6 @@ inputs:
     default: "false"
   reviewdog_flags:
     description: "Additional reviewdog flags."
-    required: false
-    default: ""
-  rules_and_presets:
-    description: "Extra rules and presets that need to be installed"
     required: false
     default: ""
 runs:

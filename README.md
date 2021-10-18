@@ -44,7 +44,7 @@ jobs:
 
 ### `remark_args`
 
-**Optional**. Additional remark-lint input arguments. Defaults to `"--use=remark-preset-lint-recommended"`.
+**Optional**. Additional remark-lint input arguments. Defaults to `"--use=remark-preset-lint-recommended"`. Default is applied programmatically when no input or config file is found.
 
 ### `annotate`
 
@@ -73,10 +73,6 @@ jobs:
 ### `reviewdog_flags`
 
 **Optional**. Additional reviewdog flags. Defaults to `""`.
-
-### `rules_and_presets`
-
-**Optional**. Extra rules and presets that need to be installed. Defaults to `""`.
 
 ## Format your code
 
