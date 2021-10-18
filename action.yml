@@ -12,6 +12,10 @@ inputs:
     # NOTE: The actual default values is '--use=remark-preset-lint-recommended' but it is
     # only applied programmatically when no input or config file is found.
     default: ""
+  install_deps:
+    description: "Install dependencies."
+    required: false
+    default: "true"
   # Reviewdog related inputs
   github_token:
     description: "GITHUB_TOKEN."
@@ -42,8 +46,21 @@ inputs:
     required: false
     default: ""
 runs:
-  using: "docker"
-  image: "Dockerfile"
+  using: "composite"
+  steps:
+    - run: $GITHUB_ACTION_PATH/entrypoint.sh
+      shell: bash
+      env:
+        INPUT_WORKDIR: ${{ inputs.workdir }}
+        INPUT_REMARK_ARGS: ${{ inputs.remark_args }}
+        INPUT_INSTALL_DEPS: ${{ inputs.install_deps }}
+        INPUT_GITHUB_TOKEN: ${{ inputs.github_token }}
+        INPUT_TOOL_NAME: ${{ inputs.tool_name }}
+        INPUT_LEVEL: ${{ inputs.level }}
+        INPUT_REPORTER: ${{ inputs.reporter }}
+        INPUT_FILTER_MODE: ${{ inputs.filter_mode }}
+        INPUT_FAIL_ON_ERROR: ${{ inputs.fail_on_error }}
+        INPUT_REVIEWDOG_FLAGS: ${{ inputs.reviewdog_flags }}
 
 # Ref: https://haya14busa.github.io/github-action-brandings/
 branding:
