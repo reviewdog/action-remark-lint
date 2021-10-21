@@ -14,7 +14,7 @@ This action runs [remark-lint](https://github.com/remarkjs/remark-lint) with [re
 
 ## Quick start
 
-In it's simplest form this action can be used to annotate the changes that are suggested by the [remark-lint](https://github.com/remarkjs/remark-lint) linter.
+In its simplest form, this (composite) action can be used to annotate the changes that are suggested by the [remark-lint](https://github.com/remarkjs/remark-lint) linter.
 
 ```yml
 name: reviewdog
@@ -25,12 +25,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: install remark presets
+        run: npm install remark-preset-lint-recommended
+        shell: bash
       - name: remark-lint
         uses: reviewdog/action-remark-lint@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-check
 ```
+
+Remark presets are also installed when they are specified them in the `dependencies` field of the `package.json` while the `install_deps` flag is enabled. This github action also works with remark-lint configuration files (see [the remark-lint documentation](https://github.com/remarkjs/remark/tree/HEAD/packages/remark-cli)).
 
 ## Inputs
 
@@ -45,6 +50,10 @@ jobs:
 ### `remark_args`
 
 **Optional**. Additional remark-lint input arguments. Defaults to `"--use=remark-preset-lint-recommended"`. Default is applied programmatically when no input or config file is found.
+
+#### `install_deps`
+
+**Optional**. Install npm dependencies (i.e. dependencies specified in the `package.json`). Defaults to `true`.
 
 ### `annotate`
 
