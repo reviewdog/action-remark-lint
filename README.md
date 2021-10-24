@@ -29,7 +29,7 @@ jobs:
         run: npm install remark-preset-lint-recommended
         shell: bash
       - name: remark-lint
-        uses: reviewdog/action-remark-lint@v2
+        uses: reviewdog/action-remark-lint@v5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-check
@@ -51,7 +51,7 @@ Remark presets are also installed when they are specified them in the `dependenc
 
 **Optional**. Additional remark-lint input arguments. Defaults to `"--use=remark-preset-lint-recommended"`. Default is applied programmatically when no input or config file is found.
 
-#### `install_deps`
+### `install_deps`
 
 **Optional**. Install npm dependencies (i.e. dependencies specified in the `package.json`). Defaults to `true`.
 
