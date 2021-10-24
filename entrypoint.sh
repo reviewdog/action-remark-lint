@@ -50,7 +50,7 @@ remark . ${INPUT_REMARK_ARGS} 2>&1 |
     -tee \
     ${INPUT_REVIEWDOG_FLAGS} || exit_val="$?"
 
-echo "[action-flake8] Clean up reviewdog..."
+echo "[action-remark-lint] Clean up reviewdog..."
 rm /tmp/reviewdog
 
 if [[ "${exit_val}" -ne '0' ]]; then
