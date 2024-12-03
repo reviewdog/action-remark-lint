@@ -45,6 +45,7 @@ remark . ${INPUT_REMARK_ARGS} 2>&1 |
     -name="${INPUT_TOOL_NAME}" \
     -reporter="${INPUT_REPORTER}" \
     -filter-mode="${INPUT_FILTER_MODE}" \
+    -fail-level="${INPUT_FAIL_LEVEL}" \
     -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
     -level="${INPUT_LEVEL}" \
     -tee \
