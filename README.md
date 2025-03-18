@@ -24,12 +24,12 @@ jobs:
     name: runner / remark-lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: install remark presets
         run: npm install remark-preset-lint-recommended
         shell: bash
       - name: remark-lint
-        uses: reviewdog/action-remark-lint@v5
+        uses: reviewdog/action-remark-lint@0ffbd16536f125c00b3d7c9c32d4a5be51b51744 # v5.17.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-check
